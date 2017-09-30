@@ -10,16 +10,15 @@
 # - セット・・・データが並んだもの（重複を許さない）
 # - 辞書・・・キーと値がペア
 
-import numpy as np  # デモ用データ生成用。本題とはあまり関係ない。  
-import matplotlib.pyplot as plt  # 今日の話題の中心となる2Dプロッティングライブラリ   
-import matplotlib.cm as cm  # グラフに使う色を細かく指定するためのクラス
-from IPython.display import Image  # 図をノートブックにインポートするためのクラス
+# -*- coding:utf-8 -*-
 
-plt.rcParams['font.size'] = 14 #フォントサイズを設定
+import os
+from bottle import route, run
 
-x = np.array(range(1, 25))
-y1 = np.random.normal(20, 5, 24)
-y2 = np.random.normal(30, 5, 24)
-y3 = np.random.normal(40, 5, 24)
-y4 = np.random.normal(50, 5, 24)
-y5 = np.random.normal(60, 5, 24)
+
+@route('/hello/')
+def hello():
+    return "Hello World"
+
+
+run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
